@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Logout</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
+  <link rel="icon" type="image/x-icon" href="images/logo_definitiu.png">
+  <link rel="stylesheet" media="all" href="css\estiloPerfil.css" />
+
+</head>
+<body>        
+  <div class="profile-pic-div">
+    <img id="photo">
+  </div>
+      <div id="rectangle">
+        <h2 id="rectangulo3" href="">Tancar sessió</h2>
+        <div>
+           <form>
+            <a onclick="clic()"><button type="button" class="buttonnom" href="index.html">Log Out</button></a>
+            <input type="button" class="return" value="TORNAR" onclick="location.href='indexPerfil.html'"></input><br>  
+          </form>
+    
+        </div>
+
+  </body>
+  <script language="javascript" src="js/config.js"></script>
+  <script language="javascript" src="js/firestore.js"></script>
+  <script language="javascript" src="js/storage.js"></script>
+  <script language="javascript" src="js/items.js"></script>
+  <script language="javascript">
+
+  var myCookie = document.cookie;
+  var spito = myCookie.split('=');
+  var useruid = spito[1];
+  console.log (useruid)
+         
+  db.collection("configUsuaris").doc(useruid).get()
+   .then(obtenerUsuario);
+
+
+  function obtenerUsuario(querySnapshot){
+  let datosUsuario=querySnapshot.data();
+  console.log(datosUsuario);
+  var fperfil = document.getElementById("photo").src=datosUsuario["foto"];
+  }
+
+
+  function clic(){
+    confirm('Estas segur de tancar la sessió?')
+    firebase.auth().signOut();
+    document.cookie = myCookie +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    window.location.href = "index.html"; 
+  }
+  </script>
+</html>
+
+ 

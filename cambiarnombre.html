@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
+  <link rel="icon" type="image/x-icon" href="images/logo_definitiu.png">
+  <title>Canvi àlias</title>
+  <link rel="stylesheet" media="all" href="css\estiloPerfil.css" />
+</head>
+<body>        
+  <div class="profile-pic-div">
+    <img id="photo">
+  </div>
+
+    <div id="rectangle">
+      <h2 id="rectangulo3" href="">Canviar àlias</h2>
+  		<form id="formulari">
+  			<input class="nomactual" type="text" name="nom" placeholder="Àlias actual" required="required" maxlength="20" pattern="[a-zA-ZÀ-ÿ0-9_]{3,20}"></input>
+  			<input class="nounom" type="text" name="nou" placeholder="Nou àlias" required="required" maxlength="20" pattern="[a-zA-ZÀ-ÿ0-9_]{3,20}"></input>
+  			<input class="contra" type="password" name="contrasenya" placeholder="Introdueix contrasenya" required="required" pattern="[a-zA-Z0-9_.%+-]{6,}$"></input><br>
+  			<input type="submit" class="buttonnom" value="Guardar nom"></input><br>
+        <input type="button" class="return" value="TORNAR" onclick="location.href='indexPerfil.html'"></input><br>
+
+  		</form>
+
+  	</div>
+
+  </body>
+
+  
+  <script language="javascript" src="js/config.js"></script>
+  <script language="javascript" src="js/firestore.js"></script>
+  <script language="javascript" src="js/storage.js"></script>
+  <script language="javascript" src="js/items.js"></script>
+  <script language="javascript">
+
+  var myCookie = document.cookie;
+  var spito = myCookie.split('=');
+  var useruid = spito[1];
+  console.log (useruid)
+         
+  db.collection("configUsuaris").doc(useruid).get()
+   .then(obtenerUsuario);
+
+
+  function obtenerUsuario(querySnapshot){
+  let datosUsuario=querySnapshot.data();
+  console.log(datosUsuario);
+  var fperfil = document.getElementById("photo").src=datosUsuario["foto"];
+  }
+
+		const formulari = document.getElementById('formulari');
+
+		formulari.addEventListener('submit', async (e) => {
+			e.preventDefault();
+			
+		var alias_actual = formulari['nom'].value;
+		var alias_nou = formulari['nou'].value;
+		var contrasenya = formulari['contrasenya'].value;
+
+    db.collection("usuaris").doc(useruid).get()
+      .then(getPass);
+
+		function getPass(querySnapshot){
+			let userPass=querySnapshot.data();
+			var contraPerfil = userPass["contrasenya"];
+			console.log(contraPerfil);
+
+    
+
+      db.collection("configUsuaris").doc(useruid).get()
+        .then(obtenerAlias);
+
+		function obtenerAlias(querySnapshot){
+			let datosUsuario=querySnapshot.data();
+			var aliasPerfil = datosUsuario["alias"];
+			console.log(aliasPerfil);
+
+      if(aliasPerfil == alias_actual && contraPerfil == contrasenya){
+
+		  db.collection('configUsuaris').doc(useruid).update({
+                                
+				alias: alias_nou,  
+      });
+      alert('àlias canviat')
+      
+      }
+      else{
+        alert('les dades no coincideixen!')
+      }
+		}
+    }
+	})
+
+  </script>
+</html>

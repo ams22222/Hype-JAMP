@@ -1,0 +1,316 @@
+
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@200&display=swap');
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Exo', sans-serif;    
+
+}
+
+body{
+     
+    background: linear-gradient(to top, #042352, #0a009b,#380152); 
+}
+
+#general{
+    position: relative;
+    margin-top: 740px;
+    margin-left: 50px;
+    margin-right: 20px;
+    width: 98%;
+    height: 90px;
+    line-height: 50px;    
+}
+
+#xarxa:hover{
+    cursor: pointer;
+    opacity: 70%;
+}
+
+nav a.cyan:hover{
+   font-weight:bold;
+   color:rgba(120, 194, 236, 0.842);
+   text-transform: uppercase;
+   background-image: linear-gradient(
+    -225deg,
+    rgba(120, 194, 236, 0.842) 0%,
+    #4454dd 29%,
+    #b503eb 67%,
+    #c467b7 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  position:relative;
+  animation:menu;
+  animation-duration:3s;
+}
+nav a.purple:hover{
+    font-weight:bold;
+    color:rgba(120, 194, 236, 0.842);
+    text-transform: uppercase;
+    background-image: linear-gradient(
+     -225deg,
+     rgba(113, 22, 136, 0.842) 0%,
+     #a1004b 29%,
+     #cf4088 67%,
+     #f13986 100%
+   );
+   background-size: auto auto;
+   background-clip: border-box;
+   background-size: 200% auto;
+   color: #fff;
+   background-clip: text;
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   animation: textclip 2s linear infinite;
+   display: inline-block; 
+   position:relative;
+   
+}
+
+nav a.cyan{
+    text-decoration: none; 
+    color:rgb(50, 204, 255);
+
+}
+nav a.purple{
+    text-decoration: none;
+    color:#8d2db9;
+}
+
+
+.Inici{
+    margin-left: 100px;
+}
+.Fotos,.Chat,.Perfil{
+    margin-top: 10px;
+    width: 20%;
+    height: 50px;
+    float: left;
+    border-radius: 5px;
+    padding-left:120px;
+    background-color: transparent;
+    font-size:25px;
+
+}
+.Inici{
+    margin-top: 10px;
+    width: 20%;
+    height: 50px;
+    float: left;
+    font-style: normal;
+    font-size:25px;
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-left:120px;
+    background-color: transparent;
+}
+
+.profile-pic-div{
+height:100px;
+width:100px;
+position:absolute;
+margin-top:50px;
+margin-left:280px;
+transform:translate(-50%,-50%);
+border-radius:50%;
+overflow:hidden;
+border: 4px solid rgba(120, 194, 236, 0.842);
+}
+#photo{
+height: 100%;
+width:100%;
+border-radius: 50%;
+}
+#file{
+    display:none;
+}
+#uploadBtn{
+
+    height:100px;
+    width:100%;
+    position:absolute;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    text-align: center;
+    background: black;
+    opacity: 70%;
+    color:white;
+    line-height:100px;
+    font-family:'Open Sans';
+    font-size:15px;
+    cursor:pointer;
+    display:none;
+    }
+img{
+height:200px;
+}
+
+
+div.missatge{
+    margin-top:40px;
+    margin-left:170px;
+    color:rgb(6, 6, 78);
+    font-weight:bold;
+    margin-left:370px;
+    height:100px;
+    width:700px;
+    border-radius:5px;
+    border: 2px solid;
+    border-radius: 4px;
+    background-color:rgb(189, 239, 243);
+    text-align:center;
+    padding-left: 20px;
+    padding-top: 10px;
+    font-size: 25px;
+    line-height: 70px;
+    
+}
+
+.tiktok{
+    float: left;
+    margin-left: 400px;
+    margin-top: 80px;
+    max-width: 200px;
+    max-height: 100px;
+    border-radius:5px;
+
+}
+.instagram{
+    float: left;
+    margin-left: -100px;
+    margin-top: 240px;
+    max-width: 200px;
+    max-height: 100px;
+    border-radius:5px;
+
+}
+.github{
+    float: left;
+    margin-left: -100px;
+    margin-top: 400px;
+    max-width: 200px;
+    max-height: 100px;
+    border-radius:5px;
+
+}
+.twitch{
+    float: left;
+    margin-left: -99px;
+    margin-top: 570px;
+    max-width: 200px;
+    max-height: 100px;
+    border-radius:5px;
+
+}
+.facebook{
+    float: left;
+    margin-left: 171px;
+    margin-top: 240px;
+    max-width: 200px;
+    max-height: 100px;
+    border-radius:5px;
+
+}
+.drive{
+    float: left;
+    margin-left: -100px;
+    margin-top: 400px;
+    max-width: 200px;
+    max-height: 100px; 
+    border-radius:5px;
+
+}
+.youtube{
+    float: left;
+    margin-left: 171px;
+    margin-top: 76px;
+    max-width: 170px;
+    max-height: 100px;
+    border-radius:5px;
+
+}
+.pinterest{
+    float: left;
+    margin-left: -100px;
+    margin-top: 240px;
+    max-width: 170px;
+    max-height: 100px;
+    border-radius:5px;
+
+}
+.twitter{
+    float: left;
+    margin-left: -100px;
+    margin-top: 400px;
+    max-width: 170px;
+    max-height: 100px; 
+    border-radius:5px;
+
+}
+.discord{
+    float: left;
+    margin-left: -100px;
+    margin-top: 570px;
+    max-width: 170px;
+    max-height: 100px; 
+    border-radius:5px;
+}
+
+
+.ddrive{
+    background-color: black;
+}
+
+ 
+
+#general a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, #b47dcd, #e878a2, #eb85ab);
+    z-index: 1;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  #general  a:hover::before {
+    transform: scaleX(1);
+  }
+  
+  
+  
+  /* ANIMATIONS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  #general[data-animation="to-left"] a::before {
+    transform-origin: right;
+  }
+  
+  #general[data-animation="center"] a::before {
+    transform-origin: center;
+  }
+  
+  #general[data-animation="bonus"] a::before {
+    transform-origin: right;
+  }
+  
+  #general[data-animation="bonus"] a:hover::before {
+    transform-origin: left;
+    transform: scaleX(1);
+    transition-timing-function: cubic-bezier(0.2, 1, 0.82, 0.94);
+  }
+

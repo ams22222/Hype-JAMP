@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" cntent="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOTOS</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/estiloFotos.css" />
+    <link rel="icon" type="image/x-icon" href="images/logo_definitiu.png">
+
+</head>
+
+<body>
+    <div id="fotos" class="title">FOTOS</div>
+    <h3 id="nombre">Nom d'imatge</h3>
+    <input id="namebox" type="text"><br><br>  
+    <img id="myimg" src="images/H.png"><label id="UpProgress"></label><br><br>
+    <button id="select">Seleccionar</button>
+    <button id="upload">Pujar</button>
+    <button id="retrieve">Recuperar</button>
+    <nav>
+        <div id="general2">
+            <div class="Inici"><a class="cyan" href ="inici.html">INICI</a></div>
+            <div class="Chat"><a class="cyan" href = "Chat.html">CHAT</a></div>
+            <div class="Fotos"><a class="purple" href = "fotos1.html">FOTOS</a></div>
+            <div class="Perfil"><a class="cyan" href = "indexPerfil.html">PERFIL</a></div>
+
+        </div>
+    </div>
+    </nav>
+</body>
+    
+    <script language="javascript" src="js/config.js"></script>
+	<script language="javascript" src="js/firestore.js"></script>
+	<script language="javascript" src="js/storage.js"></script>
+	<script language="javascript" src="js/items.js"></script>
+    <script language="javascript"  id="MainScript">
+
+    var myCookie = document.cookie;
+    var spito = myCookie.split('=');
+    var useruid = spito[1];
+    console.log (useruid)
+
+      /*Variables*/
+      var ImageName,ImageUrl;
+      var files;
+      var reader= new FileReader();
+     /*Proces de seleccio*/
+
+
+     document.getElementById("select").onclick = function(e){
+            var input = document.createElement('input');
+            input.type= 'file';
+        
+            input.onchange = e => {
+                files = e.target.files;
+                reader = new FileReader();
+                reader.onload = function(){
+                    document.getElementById("myimg").src = reader.result;
+                }
+                reader.readAsDataURL(files[0]);
+            }
+            input.click();
+     }
+
+     /*pujar imatge*/
+
+    /*puja la imatge al storage*/
+     document.getElementById('upload').onclick = function(){
+         ImgName = document.getElementById('namebox').value;
+         var uploadTask = firebase.storage().ref('Images/'+ImgName+".png").put(files[0]);
+
+         uploadTask.on('state_changed',function(snapshot){
+             var progress = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
+             document.getElementById('UpProgress').innerHTML = ' Pujant '+ progress+' %';
+         },
+
+    /*error pujada*/
+         function(error){
+             alert('error al guardar la imatge');
+         },
+   /*envia enllac de imatge a la base de dades*/
+         function(){
+          uploadTask.snapshot.ref.getDownloadURL().then(function(url){
+             ImageUrl = url;
+          
+
+          firebase.datebase().ref('Pictues/'+ImgName).set({
+            Nom: ImgName,
+            URL: ImageUrl
+          });
+            alert('La imagen se ha guardado correctamente');
+
+         }
+         );
+      });
+    }
+
+/*Recuperar*/
+
+        document.getElementById('retrieve').onclick = function(){
+           ImageName = document.getElementById('namebox').value;
+           firebase.datebase().ref('Pictues/'+ImgName).on('value',function(snapshot){
+           document.getElementById('myimg').src = snapshot.val().Link;
+
+           });
+        }
+
+	</script>
+
+</html>

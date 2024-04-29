@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Perfil</title>
+ 
+  <link rel="stylesheet" media="all" href="estiloPerfil.css" />
+</head>
+<body>        
+  <div id= "perfil"></div>
+  <div>
+    <form>
+      
+      <input class = "buscar" type="text" name="buscar" placeholder="Que busques?"></input>  
+    </form>
+  </div>
+      <div id="rectangle">
+        <h2 id="rectangulo3" href="">Mensaje de texto</h2>
+          <h3  class="rectanguloh2" onclick="clicar()">Verificacion via texto mensaje</h3>
+        </div>
+     <br>
+     <br>
+     <div> 
+         <footer>
+      <ul class="menu" data-animation="center">
+        <li><a href=" ">Inici</a></li>
+        <li><a href=" ">Chat</a></li>
+        <li><a href=" ">Fotos</a></li>
+        <li><a href=" ">Perfil</a></li>
+      </ul>
+    </footer>  
+    </div>
+  </body>
+  <script language="javascript">
+      function clicar() {
+        var age = prompt('Insereix el teu numero de telèfon', '+34 600 123 123');
+        var result = window.confirm('Estas segur que esta be?');
+if (result === true) {
+    window.alert('Guardat a la base de dades');
+}  
+
+
+      }
+  </script>
+</html>

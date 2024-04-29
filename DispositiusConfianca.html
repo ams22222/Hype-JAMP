@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Perfil</title>
+ 
+  <link rel="stylesheet" media="all" href="estiloPerfil.css" />
+</head>
+<body>        
+  <div id= "perfil"></div>
+  <div>
+    <form>
+      
+      <input class = "buscar" type="text" name="buscar" placeholder="Que busques?"></input>  
+    </form>
+  </div>
+      <div id="rectangle">
+        <h2 id="rectangulo3" href="">Dispositius de confiança</h2>
+          <h3  class="rectanguloh2">La IP conectada a la conta es: <strong id="ipId"></strong></h3>
+        </div>
+        
+
+    <script type="text/javascript">
+        function get_ip(obj){
+            document.getElementById('ipId').innerHTML = obj.ip;
+        }
+    </script>
+    <script type="text/javascript" src="https://api.ipify.org/?format=jsonp&callback=get_ip"></script>
+    
+    <br>
+     <br>
+     <div> 
+         <footer>
+      <ul class="menu" data-animation="center">
+        <li><a href=" ">Inici</a></li>
+        <li><a href=" ">Chat</a></li>
+        <li><a href=" ">Fotos</a></li>
+        <li><a href=" ">Perfil</a></li>
+      </ul>
+    </footer>  
+    </div>
+  </body>
+  
+ 
+  
+</html>
+

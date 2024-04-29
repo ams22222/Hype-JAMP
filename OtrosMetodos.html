@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Perfil</title>
+ 
+  <link rel="stylesheet" media="all" href="estiloPerfil.css" />
+</head>
+<body>        
+  <div id= "perfil"></div>
+  <div>
+    <form>
+      
+      <input class = "buscar" type="text" name="buscar" placeholder="Que busques?"></input>  
+    </form>
+  </div>
+      <div id="rectangle">
+        <h2 id="rectangulo">Otros métodos</h2>
+          <h3  class="rectanguloh2"  onclick="clicar()">  Codigos de respaldo</h3>
+         
+     </div>
+     <div> 
+         <br><br><br><br><br><br><br> 
+      <ul class="menu" data-animation="center">
+        <li><a href="#0">Inici</a></li>
+        <li><a href="#0">Chat</a></li>
+        <li><a href="#0">Fotos</a></li>
+        <li><a href="">Perfil</a></li>
+      </ul>
+    </div>
+    
+  </body>
+  <script language="javascript">
+    function clicar(){
+      
+var cantidadNumeros = 8;
+var myArray = []
+while(myArray.length < cantidadNumeros ){
+  var numeroAleatorio = Math.ceil(Math.random()*cantidadNumeros);
+  var existe = false;
+  for(var i=0;i<myArray.length;i++){
+	if(myArray [i] == numeroAleatorio){
+        existe = true;
+        break;
+    }
+  }
+  if(!existe){
+    myArray[myArray.length] = numeroAleatorio;
+  }
+
+}
+document.write("números aleatorios : " + myArray);
+
+}
+
+
+document.write("números aleatorios : " + myArray);
+}
+    </script> 
+     
+  
+</html>

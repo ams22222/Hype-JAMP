@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cambiar nombre de perfil</title>
+	<link rel="stylesheet" media="all" href="estiloPerfil.css" />
+	</head>
+  <body>
+  	<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Perfil</title>
+ 
+  <link rel="stylesheet" media="all" href="estiloPerfil.css" />
+</head>
+<body>        
+  <div id= "perfil"></div>
+  <div>
+    <form>
+      
+      <input class = "buscar" type="text" name="buscar" placeholder="Que busques?"></input>  
+    </form>
+  </div>
+      <div id="rectangle">
+        <h2 id="rectangulo3" href="">Canviar contrasenya de perfil</h2>
+  		 
+
+  	</div>
+
+  		<form>
+  			<input class="nomactual" type="password" name="contrasenya" placeholder="Contrasenya actual"></input>
+        <input class="nounom" type="password" name="contrasenya" placeholder="Nova contrasenya " id="nova"></input>
+        <input class="contra" type="password" name="contrasenya" placeholder="Repeteix la contrasenya" id="condirmar"></input>
+  			<p><button type="submit" class="buttonnom">Guardar nova contrasenya</button></p>
+  		</form>
+  	</div>
+
+    <div>   
+      <ul class="menu2" data-animation="center">
+        <li><a href="#0">Inici</a></li>
+        <li><a href="#0">Chat</a></li>
+        <li><a href="#0">Fotos</a></li>
+        <li><a href="">Perfil</a></li>
+      </ul>
+    </div>
+
+  </body>
+  <script language="javascript" src="js/config.js"></script>
+  <script language="javascript" src="js/firestore.js"></script>
+  <script language="javascript" src="js/storage.js"></script>
+  <script language="javascript" src="js/items.js"></script>
+  <script language="javascript">
+
+    var contrasenya = document.getElementById('nova');
+    var confirmar_contrasenya = document.getElementById('confirmar');
+
+    function validarContrasenya(){
+      if (contrasenya.value != confirmar_contrasenya.value) {
+        confirmar_contrasenya.setCustomValidity('Las contraseñas no coinciden');
+      }
+      else{
+        confirmar_contrasenya.setCustomValidity('');
+      }
+    } 
+
+</script>
+</html>

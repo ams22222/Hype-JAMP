@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" cntent="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INICI</title>
+	<link rel="stylesheet" type="text/css" href="css/estiloInici.css" />
+    <link rel="icon" type="image/x-icon" href="images/logo_definitiu.png">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
+
+</head>
+<body id = " fonts">
+    <div class="profile-pic-div">
+        <img id="photo">
+        <input type="file" id="file">   
+        <label for="file" id="uploadBtn">Escull foto</label>
+    </div>
+    <div class="missatge">Que t'interessa veure<span id="aliass" class="salia"></span> ?</div>
+    <div><a onclick="window.open('https://www.tiktok.com/')"><img id="xarxa" class="tiktok" src="images/share_img.png"></img></a></div>  
+    <div><a onclick="window.open('https://www.instagram.com/')"><img id="xarxa" class="instagram" src="images/instagram-logo-icone4.png"></img></a></div>
+    <div><a onclick="window.open('https://github.com/')" ><img id="xarxa" class="github" src="images/GitHub-Mark.png"></img></a></div>  
+    <div><a onclick="window.open('https://www.twitch.tv/')" ><img id="xarxa" class="twitch" src="images/0bHBmqXe_400x400.png"></img></a></div>
+    <div><a  onclick="window.open('https://ca-es.facebook.com/')"><img id="xarxa" class="facebook" src="images/fb_icon_325x325.png"></img></a></div>
+    <div class="ddrive"><a onclick="window.open('https://drive.google.com/drive')"><img id="xarxa" class="drive" src="images/Google_Drive_logo.png"></img></a></div>   
+    <div><a onclick="window.open('https://www.youtube.com/')"><img id="xarxa" class="youtube" src="images/dbxylwy-16179b17-3a66-4722-bd16-8e60698ba756.png"></img></a></div>
+    <div><a onclick="window.open('https://www.pinterest.es/')"><img id="xarxa" class="pinterest" src="images/Pinterest-Simbolo.jpg"></img></a></div>
+    <div><a onclick="window.open('https://twitter.com/?lang=ca')"><img id="xarxa" class="twitter" src="images/twitter-bird-white-on-blue.jpg"></img></a></div>
+    <div><a onclick="window.open('https://discord.com/')"><img id="xarxa" class="discord" src="images/Rebrand Blog_[1].png"></img></a></div> 
+
+    <nav>
+        <div id="general">
+            <div class="Inici"><a class="purple" href ="inici.html">INICI</a></div>
+            <div class="Chat"><a class="cyan" href = "Chat.html">XAT</a></div>
+            <div class="Fotos"><a class="cyan" href = "fotos1.html">FOTOS</a></div>
+            <div class="Perfil"><a class="cyan" href = "indexPerfil.html">PERFIL</a></div>
+        </div>
+    </nav>
+</body>
+<script language="javascript" src="js/config.js"></script>
+<script language="javascript" src="js/firestore.js"></script>
+<script language="javascript" src="js/storage.js"></script>
+<script language="javascript" src="js/items.js"></script>
+<script language="javascript">
+    var myCookie = document.cookie;
+    var spito = myCookie.split('=');
+    var useruid = spito[1];
+    console.log (useruid)
+    
+    db.collection("configUsuaris").doc(useruid).get()
+        .then(obtenerUsuario);
+
+
+function obtenerUsuario(querySnapshot){
+    let datosUsuario=querySnapshot.data();
+    console.log(datosUsuario);
+     var fperfil = document.getElementById("photo").src=datosUsuario["foto"];
+}
+
+    db.collection("configUsuaris").doc(useruid).get()
+        .then(obtenerAlias);
+
+function obtenerAlias(aliaSnapshot){
+    let aliassUsuario=aliaSnapshot.data();
+    console.log(aliassUsuario);
+     var aperfil = document.getElementById("aliass").innerHTML=" "+aliassUsuario["alias"];
+}
+
+const imgDiv=document.querySelector('.profile-pic-div');
+const img= document.querySelector('#photo');
+const file=document.querySelector('#file');
+const uploadBtn=document.querySelector('#uploadBtn');
+
+imgDiv.addEventListener('mouseenter',function(){
+    uploadBtn.style.display="block";
+});
+
+imgDiv.addEventListener('mouseleave',function(){
+    uploadBtn.style.display="none";
+});
+
+file.addEventListener('change',function(){
+    const choosedFile=this.files[0];
+
+    if(choosedFile){
+        const reader=new FileReader();
+
+        reader.addEventListener('load',function(){
+        img.setAttribute('src',reader.result);
+        });
+        var urlf = reader.readAsDataURL(choosedFile);
+        console.log(choosedFile)
+
+       
+    }
+});
+
+
+</script>
+</html>

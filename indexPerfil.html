@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
+  <link rel="icon" type="image/x-icon" href="images/logo_definitiu.png">
+  <title>PERFIL</title>
+ 
+  <link rel="stylesheet" media="all" href="css\estiloPerfil.css" />
+</head> 
+<body>        
+  <div class="profile-pic-div">
+    <img id="photo">
+  </div>
+  <div>
+    <form>
+      
+      <input id="idBotonBusqueda"class = "buscar" type="text" name="buscar" placeholder="Que busques?"></input>
+        
+    </form>
+  </div>
+      <div id="rectangle">
+        <h2 id="rectangulo">Perfil</h2>
+          <h3  class="rectanguloh2" onclick=""><a href="cambiarnombre.html">  Canviar àlias</h3></a>
+          <h3 class="rectanguloh2"> <a href="cambiarfoto.html"> Canviar foto de perfil</h3></a>
+
+        <h2 id="rectangulo2"> Seguretat</h2>
+       
+          <h3 class="rectanguloh2"> <a href="cambiocontrasenya.html"> Canviar contrasenya de usuari</h3></a>
+          
+          <h3 class="rectanguloh2"><a href="indexAutentificador.html"> Autentificador amb dos pasos</h3></a>
+          
+          <h2 id="rectangulo2"> Compte</h2>
+          
+            <h3 class="rectanguloh2"> <a href="informacioPersonal.html"> Informació personal</h3></a>
+               <h3 class="rectanguloh2"><a href="cambiarIdioma.html"> Canviar idioma de l'app</h3></a>
+                 <h3 class="rectanguloh2"><a href="cerrarsesion.html"> Tancar sessió</h3></a>
+
+     </div>
+     <div>   
+      <ul class="menu" data-animation="center">
+        <li><a href="inici.html">INICI</a></li>
+        <li><a href="Chat.html">XAT</a></li>
+        <li><a href="fotos1.html">FOTOS</a></li>
+        <li><a href="indexPerfil.html">PERFIL</a></li>
+      </ul>
+    </div>
+  </body>
+
+  <script language="javascript" src="js/config.js"></script>
+  <script language="javascript" src="js/firestore.js"></script>
+  <script language="javascript" src="js/storage.js"></script>
+  <script language="javascript" src="js/items.js"></script>
+  <script language="javascript">
+
+
+seccion1="Cambiar nombre de perfil";
+seccion2="Cambiar foto de perfil";
+seccion3="Cambiar contrasenya de usuari";
+seccion4="Autentificador amb dos pasos";
+seccion5="Informació personal";
+seccion6="Cambiar idioma de l'app";
+seccion7="Tancar sessió";
+ 
+ busqueda=document.getElementById("idBotonBusqueda").value;
+ let secciones=[seccion1,seccion2,seccion3,seccion3,seccion4,seccion5,seccion6,seccion7];
+ for(let i=0; i<secciones.lenght; i++){
+   let seccion= secciones[i];
+   if (seccion.includes(busqueda)==true){
+    alert(seccion);
+    document.getElementById("idBotonBusqueda").addEventListener("keyup"),()=>{
+
+    }
+   }
+ }
+
+
+          var myCookie = document.cookie;
+          var spito = myCookie.split('=');
+          var useruid = spito[1];
+          console.log (useruid)
+          
+          db.collection("configUsuaris").doc(useruid).get()
+              .then(obtenerUsuario);
+
+
+      function obtenerUsuario(querySnapshot){
+          let datosUsuario=querySnapshot.data();
+          console.log(datosUsuario);
+          var fperfil = document.getElementById("photo").src=datosUsuario["foto"];
+      }
+      
+ 
+    </script>
+</html>
